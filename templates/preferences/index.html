@@ -1,0 +1,34 @@
+{% load static %} {% include "partials/head.html" %}
+
+<body class="">
+  {% include "partials/_sidebar.html" %}
+
+  <div class="main-panel">
+    {% include "partials/_topbar.html" %}
+    <div class="content">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            {% include "partials/_messages.html" %}
+            <div class="col-md-12">
+            <form action="{% url "preferences" %}" method="post">
+                {% csrf_token %}
+                <select name="currency"
+                  class="selectpicker"
+                  aria-label="Default select example"
+                >
+                  <option selected>Open this select menu</option>
+                  {% for currency in currencies %}
+                  <option name="currency" value="{{currency.name}} - {{currency.value}}"></option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-success" type="submit">Save</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "partials/_script.html" %}
+  </div>
+</body>
