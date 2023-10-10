@@ -64,7 +64,7 @@ class RegistrationView(View):
                 messages.success(request, "Account succesfully created")
                 return redirect("login")
 
-        return render(request, "authentication/register.html")
+        return render(request, "authentication/register.html", context)
 
 
 class LoginView(View):

@@ -1,1 +1,35 @@
-{% extends "base.html" %}
+{% load static %} {% include "partials/head.html" %}
+
+<body class="">
+  {% include "partials/_sidebar.html" %}
+
+  <div class="main-panel">
+    {% include "partials/_topbar.html" %}
+    <div class="content">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            {% include "partials/_messages.html" %}
+            <div class="col-md-12">
+              <h2>Add Cloud</h2>
+
+              <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="text" class="form-control" name="amount">
+                    </div>
+                </div>
+              </div>
+
+              <form action="{% url "cloud_s" %}" method="post">
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "partials/_script.html" %}
+  </div>
+</body>
