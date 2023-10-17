@@ -2,29 +2,47 @@
 
 <body class="">
   {% include "partials/_sidebar.html" %}
-
+  
   <div class="main-panel">
     {% include "partials/_topbar.html" %}
     <div class="content">
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            {% include "partials/_messages.html" %}
             <div class="col-md-12">
               <h2>Add Cloud</h2>
-
+              
+              <form action="{% url "add-cloud_s" %}" method="post">
+                {% include "partials/_messages.html" %}
+                {% csrf_token %}
               <div class="card">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="amount">Amount</label>
-                        <input type="text" class="form-control" name="amount">
+                        <input type="text" class="form-control" value="{{values.amount}}" name="amount">
                     </div>
+                    <div class="form-group">
+                      <label for="amount">Description</label>
+                      <input type="text" class="form-control" name="description" value="{{values.description}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Category</label>
+                    <select name="category" class="form-control" id="">
+                      {% for category in categories %}
+                      <option value="{{category.name}}" name="category">{{category.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Date of Cloud</label>
+                    <input type="date" class="form-control" name="cloud_date">
+                  </div>
                 </div>
               </div>
+              <input type="submit" value"submit" class="btn btn-primary">
+            </form>
 
-              <form action="{% url "cloud_s" %}" method="post">
 
-              </form>
             </div>
           </div>
         </div>

@@ -1,0 +1,54 @@
+{% load static %} {% include "partials/head.html" %}
+
+<body class="">
+  {% include "partials/_sidebar.html" %}
+  
+  <div class="main-panel">
+    {% include "partials/_topbar.html" %}
+    <div class="content">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Edit Cloud</h2>
+              
+              <form action="{% url "cloud-edit" cloud_s.id %}" method="post">
+                {% include "partials/_messages.html" %}
+                {% csrf_token %}
+              <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="text" class="form-control" value="{{values.amount}}" name="amount">
+                    </div>
+                    <div class="form-group">
+                      <label for="amount">Description</label>
+                      <input type="text" class="form-control" name="description" value="{{values.description}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Category</label>
+                    <select name="category" class="form-control" id="">
+                      <option value="{{category.name}}" selected>{{values.category}}</option>
+                      {% for category in categories %}
+                      <option  value="{{category.name}}">{{category.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Date of Cloud</label>
+                    <input type="date" value="{{values.date}}" class="form-control" name="cloud_date">
+                  </div>
+                </div>
+              </div>
+              <input type="submit" value"submit" class="btn btn-primary">
+            </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "partials/_script.html" %}
+  </div>
+</body>

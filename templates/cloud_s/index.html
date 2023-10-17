@@ -25,13 +25,44 @@
                     </nav>
                   </div>
                 </div>
+                {% include "partials/_messages.html" %}
+                <div class="card">
+                  <div class="card-body">
+                    {% if cloud_s.count %}
+                    <table class="table table-bordered table-dark">
+                      <thead>
+                        <tr>
+                          <th scope="col">NO</th>
+                          <th scope="col">Amount</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for cloud in cloud_s %}
+                        <tr>
+                          <td>1</td>
+                          <td>{{cloud.amount}}</td>
+                          <td>{{cloud.description}}</td>
+                          <td>{{cloud.category}}</td>
+                          <td>{{cloud.date}}</td>
+                          <td><a href="{% url "cloud-edit" cloud.id %}" class="btn btn-info">Edit</a></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    {% endif %}
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="card card-chart">
                     <div
-                      class="card-header card-header-rose"
-                      data-header-animation="true"
+                    class="card-header card-header-rose"
+                    data-header-animation="true"
                     >
                       <div class="ct-chart" id="websiteViewsChart"></div>
                     </div>
